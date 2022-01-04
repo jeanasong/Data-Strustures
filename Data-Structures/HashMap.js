@@ -13,10 +13,25 @@ class HashMap {
       */
       return hashCode % this.hashmap.length;
     }
+
+    /* assign() store the hashed key in a variable arrayIndex
+       assign the value to the element at arrayIndex in the hash map
+       */
+    // Declare a HashMap method called .assign() with the parameters key and value.
+    assign(key, value) {
+      // Declare a constant called arrayIndex with the value of the hashed and compressed key.
+      const arrayIndex = this.hash(key);
+      // Assign the value to the element at the index you derived from hashing, arrayIndex.
+      this.hashmap[arrayIndex] = value;
+    }
     
   }
   
   module.exports = HashMap;
+
+  const employees = new HashMap(3);
+  employees.assign('34-567', 'Mara');
+  console.log(employees.hashmap);
 
   /* 
   Check your work. Save a new HashMap instance with a size of 3, 
@@ -24,6 +39,6 @@ class HashMap {
   Are the logged values the same or are they different?
   */
 
-  const myHashMap = new HashMap(3);
-  console.log(myHashMap.hash('id'));
-  console.log(myHashMap.hash('id'));
+  // const myHashMap = new HashMap(3);
+  // console.log(myHashMap.hash('id'));
+  // console.log(myHashMap.hash('id'));
