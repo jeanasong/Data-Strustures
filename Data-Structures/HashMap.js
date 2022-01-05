@@ -24,14 +24,25 @@ class HashMap {
       // Assign the value to the element at the index you derived from hashing, arrayIndex.
       this.hashmap[arrayIndex] = value;
     }
+
+    // retrieving data
+
+    retrieve(key) {
+      const arrayIndex = this.hash(key);
+      return this.hashmap[arrayIndex];
+    }
     
   }
   
   module.exports = HashMap;
 
-  const employees = new HashMap(3);
-  employees.assign('34-567', 'Mara');
-  console.log(employees.hashmap);
+  const glossary = new HashMap(3);
+  glossary.assign('semordnilap', 'Words that form different words when reversed');
+  console.log(glossary.retrieve('semordnilap'));
+
+  // const employees = new HashMap(3);
+  // employees.assign('34-567', 'Mara');
+  // console.log(employees.hashmap);
 
   /* 
   Check your work. Save a new HashMap instance with a size of 3, 
