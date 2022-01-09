@@ -21,8 +21,22 @@ class HashMap {
     assign(key, value) {
       // Declare a constant called arrayIndex with the value of the hashed and compressed key.
       const arrayIndex = this.hash(key);
-      // Assign the value to the element at the index you derived from hashing, arrayIndex.
-      this.hashmap[arrayIndex] = value;
+      const linkedList = this.hashmap[arrayIndex];
+      if (linkedList.head === null) {
+        linkedList.addToHead({ key, value });
+        return;
+      }
+      let current = linkedList.head;
+      while (current) {
+        if (current.data.key === key) {
+          current.data = { key, value };
+        }
+        if (!current.next) {
+          current.next = new Node({ key, value });
+          break;
+        }
+        current = current.next;
+      }
     }
 
     // retrieving data
