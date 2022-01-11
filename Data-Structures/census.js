@@ -10,11 +10,11 @@ const birdCensus = new HashMap(16);
 
 /* Assign the following key-value pairs to birdCensus:
 
-Key: 'mandarin duck', Value: 'Central Park Pond'
+Key: 'london', Value: 'Chelsea'
 Key: 'monk parakeet', Value: 'Brooklyn College'
 Key: 'horned owl', Value: 'Pelham Bay Park' */
 
-birdCensus.assign('mandarin duck', 'Central Park Pond');
+birdCensus.assign('london', 'Chelsea');
 birdCensus.assign('monk parakeet', 'Brooklyn College');
 birdCensus.assign('horned owl', 'Pelham Bay Park');
 
