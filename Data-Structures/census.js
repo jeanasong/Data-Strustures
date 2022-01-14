@@ -23,4 +23,4 @@ birdCensus.assign('premier league', 'England');
 
 console.log(birdCensus.retrieve('london'));
 console.log(birdCensus.retrieve('tigers fight'));
-console.log(birdCensus.retrieve('premier league owl'));
+console.log(birdCensus.retrieve('premier league'));
