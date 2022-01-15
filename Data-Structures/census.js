@@ -10,17 +10,17 @@ const birdCensus = new HashMap(16);
 
 /* Assign the following key-value pairs to birdCensus:
 
-Key: 'london', Value: 'Chelsea'
+Key: 'drogba', Value: 'Chelsea'
 Key: 'tigers fight', Value: 'Brooklyn College'
 Key: 'premier league', Value: 'England' */
 
-birdCensus.assign('london', 'Chelsea');
+birdCensus.assign('drogba', 'Chelsea');
 birdCensus.assign('tigers fight', 'Linden Football');
 birdCensus.assign('premier league', 'England');
 
 // Retrieve the location for each of the three birds counted in birdCensus. 
 // Log them to the terminal.
 
-console.log(birdCensus.retrieve('london'));
+console.log(birdCensus.retrieve('drogba'));
 console.log(birdCensus.retrieve('tigers fight'));
 console.log(birdCensus.retrieve('premier league'));
