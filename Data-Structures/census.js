@@ -15,7 +15,9 @@ Key: 'cameroon', Value: 'Africa'
 Key: 'premier league', Value: 'England' 
 Key: 'chelsea legend', Value: 'Drogba' 
 key: 'bitcoin', value: 'Crypto'
-key: 'cardano', 'Blockchain' */
+key: 'cardano', 'Blockchain' 
+key: 'chainlinks', 'Ethereun network' */
+
 
 birdCensus.assign('drogba', 'Chelsea');
 birdCensus.assign('cameroon', 'Africa');
@@ -23,6 +25,7 @@ birdCensus.assign('premier league', 'England');
 birdCensus.assign('chelsea legend', 'Drogba');
 birdCensus.assign('bitcoin', 'Crypto');
 birdCensus.assign('cardano', 'Blockchain');
+birdCensus.assign('chainlinks', 'Ethereun network');
 
 // Retrieve the location for each of the three birds counted in birdCensus. 
 // Log them to the terminal.
@@ -33,3 +36,4 @@ console.log(birdCensus.retrieve('premier league'));
 console.log(birdCensus.retrieve('chelsea legend'));
 console.log(birdCensus.retrieve('bitcoin'));
 console.log(birdCensus.retrieve('cardano'));
+console.log(birdCensus.retrieve('chainlinks'));
