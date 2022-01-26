@@ -1,0 +1,38 @@
+Hash Map Runtimes vs Linked List Runtimes
+Similarly, let’s compare the runtimes of searching for a particular element in a linked list and in a hash map.
+
+
+Retrieving an Element from a Linked List
+
+To find an element in a linked list, we will have to search through the entire list to see if the element is there. 
+Refer to the findMax() function we looked at above for an example. Iterating through the list means that this process has a big O runtime of O(n).
+
+
+Retrieving an Element from a Hash Map
+
+Retrieving an element from a hash map is more efficient, due to its structure. Hash maps store information using key-value pairs, which means that every value is linked to a unique key. 
+In order to find the value from the key, it uses the hash function, which has a big O runtime of O(1). If you don’t have to search through the entire data structure, retrieving an element from a hash map is faster than retrieving an element from a linked list.
+
+
+However, there is the possibility that the element you are looking for is not at the spot that you expect it to be. This happens when two keys have the same hash. There are a few ways hash maps resolve this issue, including separate chaining and open addressing.
+
+
+Separate Chaining
+
+One way to solve hash map collisions is to create a linked list at the array index where the collision occurred. All elements that hash to the same index will be in that list. 
+This means that to find an element in a hash map that uses separate chaining, you must first find the correct index, and then search through the list at that index (if there is more than one element).
+
+
+Question
+
+Given the multiple steps required to retrieve an element from a hash map that uses separate chaining, what is the big O runtime of that retrieval?
+
+Answer: n
+
+The worst case would be that all elements in the hash map hashed to the same index and are in one linked list with the element you’re looking for at the end of the list. To find it, you would have to iterate through the list, which means the big O runtime is O(n).
+linear: Θ(N)
+
+
+Open Addressing
+Another way to solve hash map collisions is to simply move down the array until you find an open index, and place the element there. This is a type of open addressing that is called linear probing. 
+When retrieving an element from a hash map that uses linear probing, the worst case would be if the element hashes to the first index, but is actually at the last index. Since you would have to search through the entire array, the big O runtime for retrieving an element from this kind of hash map is O(n).

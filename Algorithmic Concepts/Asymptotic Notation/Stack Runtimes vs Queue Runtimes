@@ -1,0 +1,20 @@
+Stack Runtimes vs Queue Runtimes
+
+In addition to analyzing the runtimes of various data structures, it is also important to compare the runtimes of different data structures.
+
+We will compare the runtimes of retrieving the first value added to a queue to the runtime of retrieving the first value added to a stack.
+
+Removing the First Value Added to a Queue
+A queue is a FIFO (first in, first out) data structure, which means that the first element added to it, will always be the first element removed from it. Removing this element does not require you to iterate through the queue.
+
+Removing the First Value Added to a Stack
+On the other hand, a stack is a FILO (first in, last out) data structure. This means that the first element added will be the last element removed. Removing this element will require you to iterate through the stack, all the way to the bottom. 
+
+Question
+
+The big O runtime of removing the first element added to a Queue is _____, and the big O runtime of removing the first element added to a Stack is _____.
+
+Answer
+
+Since the element will be at the head of the queue, removing it is one step, so it is O(1). On the other hand, since the element will be at the bottom of the stack, removing it requires iterating through the whole stack, so it is O(n).
+constant: Θ(1) and linear: Θ(N)
