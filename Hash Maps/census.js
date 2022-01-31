@@ -17,7 +17,8 @@ Key: 'chelsea legend', Value: 'Drogba'
 key: 'bitcoin', value: 'Crypto'
 key: 'cardano', 'Blockchain' 
 key: 'gold', 'Commodity' 
-key: 'lion', 'Animal' */
+key: 'lion', 'Animal' 
+key: 'tyrannosaurus rex', 'Dinosaur'*/
 
 birdCensus.assign('drogba', 'Chelsea');
 birdCensus.assign('cameroon', 'Africa');
@@ -27,6 +28,7 @@ birdCensus.assign('bitcoin', 'Crypto');
 birdCensus.assign('cardano', 'Blockchain');
 birdCensus.assign('gold', 'Commodity');
 birdCensus.assign('lion', 'Animal');
+birdCensus.assign('tyrannosaurus rex', 'Dinosaur');
 
 // Retrieve the location for each of the three birds counted in birdCensus. 
 // Log them to the terminal.
@@ -39,3 +41,4 @@ console.log(birdCensus.retrieve('bitcoin'));
 console.log(birdCensus.retrieve('cardano'));
 console.log(birdCensus.retrieve('gold'));
 console.log(birdCensus.retrieve('lion'));
+console.log(birdCensus.retrieve('tyrannosaurus rex'));
