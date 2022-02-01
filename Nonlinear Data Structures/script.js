@@ -1,14 +1,14 @@
 const TreeNode = require('./TreeNode');
 
-// This for Pretty Print
+// This is for Pretty Print, Depth-first Tree Traversal and Breadth-first Tree Traversal.
 const tree = new TreeNode(1);
 const randomize = () => Math.floor(Math.random() * 20);
-
 
 ////////
 
 const tree = new TreeNode(1); //instantiate a TreeNode class with argument of 1 and assign it to a const variable tree.
 console.log(tree); //Display the contents of tree with console.log.
+
 
 // Adding a child
 tree.addChild(15); // Add a child of value 15 to the tree object.
@@ -52,3 +52,41 @@ for (let i = 0; i < 3; i++) {
   
   // pretty-print the tree
   tree.print();
+
+
+  // Depth-first Tree Traversal
+
+  // add first-level children
+for (let i = 0; i < 3; i++) {
+    tree.addChild(randomize());
+  }
+  
+  // add second-level children
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 2; j++) {
+      tree.children[i].addChild(randomize());
+    }
+  }
+  
+  tree.print(); // Display the sample tree provided using the .print() method.
+  tree.depthFirstTraversal() // Then, traverse the sample tree using the traversal method you have just created.
+  //Study the results by comparing the output from .print() and .depthFirstTraversal(). Did you notice anything particular about the ordering of data from both methods?
+
+
+  // Breadth-first Tree Traversal
+
+  // add first-level children
+for (let i = 0; i < 3; i++) {
+    tree.addChild(randomize());
+  }
+  
+  // add second-level children
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 2; j++) {
+      tree.children[i].addChild(randomize());
+    }
+  }
+  
+  tree.print() // Display the sample tree provided using the pretty print method.
+  tree.breadthFirstTraversal(); // Then, traverse the sample tree using the traversal method you have just created.
+  // Study the results by comparing the output from .print() and .breadthFirstTraversal().
