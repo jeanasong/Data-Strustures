@@ -1,18 +1,54 @@
 const TreeNode = require('./TreeNode');
 
+// This for Pretty Print
 const tree = new TreeNode(1);
+const randomize = () => Math.floor(Math.random() * 20);
 
-console.log(tree);
 
-tree.addChild(15);
-console.log(tree);
+////////
 
-tree.addChild(new TreeNode(30));
-// console.log(tree);
-// How to remove a child from a tree
+const tree = new TreeNode(1); //instantiate a TreeNode class with argument of 1 and assign it to a const variable tree.
+console.log(tree); //Display the contents of tree with console.log.
 
-console.log(tree);
-tree.removeChild(15);
-console.log(tree);
-tree.removeChild(node);
-console.log(tree);
+// Adding a child
+tree.addChild(15); // Add a child of value 15 to the tree object.
+console.log(tree); // Display the output of tree in the terminal
+
+
+// Add this child to the tree object.
+tree.addChild(new TreeNode(30)); // Add another child by creating a TreeNode for it with value 30
+console.log(tree); // Display the output of tree on the terminal
+
+
+// Removing a Child from a tree
+console.log(tree); // Display the output of the tree.
+tree.removeChild(15); // Remove the element in the tree by data and display the tree.
+console.log(tree); // display the tree.
+tree.removeChild(node); // Remove the element in the tree by TreeNode and display the tree.
+console.log(tree); // display the tree.
+
+
+// Pretty Print
+// add first-level children
+for (let i = 0; i < 3; i++) {
+    tree.addChild(randomize());
+  }
+  
+  // add second-level children
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 2; j++) {
+      tree.children[i].addChild(randomize());
+    }
+  }
+  
+  // add third-level children
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 2; j++) {
+      for (let k = 0; k < 2; k++) {
+        tree.children[i].children[j].addChild(randomize());
+      }
+    }
+  }
+  
+  // pretty-print the tree
+  tree.print();
