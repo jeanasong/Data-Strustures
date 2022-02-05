@@ -90,3 +90,36 @@ for (let i = 0; i < 3; i++) {
   tree.print() // Display the sample tree provided using the pretty print method.
   tree.breadthFirstTraversal(); // Then, traverse the sample tree using the traversal method you have just created.
   // Study the results by comparing the output from .print() and .breadthFirstTraversal().
+
+
+
+  const entries = {
+  'Breakfast' : [ 'Cereal', 'BBQ Chicken', 'Oatmeal' ],
+  'Lunch' : [ 'Soup', 'Sandwich', 'Lasagna' ],
+  'Dinner' : [ 'Yogurt', 'Filet Mignon', 'Fish Florentine' ]
+};
+
+const meals = Object.keys(entries);
+for (let meal=0; meal < meals.length; meal++){
+  menu.addChild(meals[meal]);
+  const entrylist = entries[meals[meal]];
+  entrylist.forEach( entry => {
+    menu.children[meal].addChild(entry);
+  });
+}
+
+menu.print();
+// tree.Corrected Menu;
+menu.removeChild('BBQ Chicken');
+// add BBQ Chicken to Dinner
+menu.children[2].addChild('BBQ Chicken');
+
+// remove Yogurt from Dinner
+menu.removeChild('Yogurt');
+// add Yogurt to Breakfast
+menu.children[0].addChild('Yogurt');
+
+console.log('------- Corrected Menu');
+menu.print();
+
+menu.depthFirstTraversal();
