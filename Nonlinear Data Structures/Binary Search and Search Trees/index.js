@@ -21,7 +21,7 @@ const binarySearch = (arr, target) => {
   
   // Change target, at the bottom of index.js to another value in the searchable array to see if your loop returns the correct index.
   const searchable = [1, 2, 7, 8, 22, 28, 41, 58, 67, 71, 94];
-  const target = 28;
+  const target = 67;
   
   console.log(binarySearch(searchable, target));
   
