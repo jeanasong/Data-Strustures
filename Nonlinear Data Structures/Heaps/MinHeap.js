@@ -9,9 +9,7 @@ const minHeap = new MinHeap();
 console.log(minHeap.heap);
 // [ null ]
 console.log(minHeap.size);
-// 0 
-
-let get going*/
+// 0 */
 
 class MinHeap {
     constructor() { // Within MinHeap.js, define the MinHeap class constructor with no parameter. Inside the constructor:
