@@ -78,3 +78,96 @@ Just like that, we’ve retrieved the minimum value, allocated a new minimum, an
 How many swaps in total did we make to retrieve the minimum value and restore the heap property?
 
 If we have two children where we can make a swap, why do we always choose the lower of the two values?
+
+
+
+
+Bubble Up Part I
+Our MinHeap needs to satisfy two conditions:
+
+The element at index 1 is the minimum value in the entire list.
+Every child element in the list must be larger than its parent.
+
+
+
+Parent and Child Elements
+Great work so far! Our MinHeap adds elements to the internal heap, keeps a running count, and has the beginnings of .bubbleUp().
+
+Before we dive into the logic for .bubbleUp(), let’s review how heaps track elements. We use an array for storing internal elements, but we’re modeling it on a binary tree, where every parent element has up to two child elements.
+
+Child and parent elements are determined by their relative indices within the internal heap. By doing some arithmetic on an element’s index, we can determine the indices for parent and child elements (if they exist).
+
+Parent: (index / 2), rounded down
+Left Child: index * 2
+Right Child: (index * 2) + 1
+These calculations are important for the efficiency of the heap, but they’re not necessary to memorize, so we have provided three helper functions: getParent(), getLeft(), and getRight() in MinHeap.js.
+
+These helpers take an index as the sole parameter and return the corresponding parent or child index.
+
+console.log(myHeap.heap) 
+// returns [null, 10, 13, 21, 61, 22, 23, 99]
+ 
+getParent(4); // returns (4 / 2) == 2
+ 
+getLeft(3);   // returns (3 * 2) == 6
+ 
+getRight(3);  // returns (3 * 2) + 1 == 7
+
+
+
+Bubble Up Part II
+
+Now that we understand how to determine the relationship of elements with the internal heap, we’re ready to finish .bubbleUp().
+
+In a min-heap, we need to ensure that every child is greater in value than its parent. Let’s add an element to the following heap.
+
+console.log(minHeap.heap)
+// returns [null, 10, 13, 21, 61, 22, 23, 99]
+ 
+heap.add(12)
+( new_element )
+{ parent_element }
+[null, 10, 13, 21, {61}, 22, 23, 99, (12)]
+Oh no! We’ve violated the min-heap condition because 12‘s parent, 61, is greater than its child, 12.
+
+To fix this, we will exchange the parent and the child elements.
+
+before
+[null, 10, 13, 21, {61}, 22, 23, 99, (12)]
+SWAP 12 and 61
+after
+[null, 10, 13, 21, (12), 22, 23, 99, {61}]
+12‘s parent is now 13 and it violates the min-heap condition. To fix this, we continue moving upwards swapping parent-child values.
+
+before
+[null, 10, {13}, 21, (12), 22, 23, 99, 61]
+SWAP 12 and 13
+after
+[null, 10, (12), 21, {13}, 22, 23, 99, 61]
+12‘s parent is now 10 and no longer violates the min-heap condition. We’ve restored the heap!
+
+[null, {10}, (12), 21, 13, 22, 23, 99, 61]
+The child, 12, is greater than the parent, 10!
+Let’s recap our strategy for .bubbleUp():
+
+Set the current element index to be the last index of heap
+  While current element is valid and its value is less than its parent's value
+   Swap the indexes
+   Update the current element index to be its parent index
+
+
+
+Heapify I
+We’ve retrieved the minimum element but left our MinHeap in disarray. There’s no reason to get discouraged; we’ve handled this type of problem before, and we can get our MinHeap back in shape!
+
+We’ll define a method, .heapify(), which performs a similar role to .bubbleUp(), except now we’re moving down the tree instead of up. The current element is a parent that can have either a left child or two children, but not just a right child.
+
+We have written a helper method, .canSwap(), to return true if swapping can occur for either child and false otherwise:
+
+canSwap(current, leftChild, rightChild) {
+  // Check that one of the possible swap conditions exists
+  return (this.exists(leftChild) && this.heap[current] > this.heap[leftChild] 
+  || this.exists(rightChild) && this.heap[current] > this.heap[rightChild]
+    );
+  }
+To maintain the min-heap condition, the parent value has to be less than both its child values. To see if a swap is necessary, starting with the left child, we first check that the child exists and then whether the min-heap condition is broken, i.e. the current element has a value greater than that child’s value. If the left child does not break the min-heap condition, the same check is performed on the right child.
