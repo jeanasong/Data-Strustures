@@ -31,6 +31,7 @@ class MinHeap {
       this.size--; // decrement the heap size.
       console.log(`.. Removed ${min} from heap`, this.heap); // a message that shows that the minimum element has been removed followed by the content of the heap; use the stringRemove at the beginning of the message.
       // console.log('..',this.heap);
+      this.heapify(); // Go back into .popMin() and make a call to .heapify() before we return min.
       return min; // Lastly, return the min variable in .popMin().
       
     }
