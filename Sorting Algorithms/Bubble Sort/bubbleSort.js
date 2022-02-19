@@ -20,12 +20,17 @@ const bubbleSort = input => {
     (We’ll add code later that will restart the loop if we might have to keep swapping to “bubble up” elements to the end of the array.) */
     swapping = false; // Inside of the while loop we created, set swapping to false.
     /*Create a for loop nested inside the while loop under the line where you reassigned the value of swapping.
-    The for loop should visit every element in the input array starting from the first element and stopping at the second-to-last element. Setting the condition for the loop this way allows us to stay within the bounds of our input array and only check elements that exist.
+    The for loop should visit every element in the input array starting from the first element and stopping at the second-to-last element. 
+    Setting the condition for the loop this way allows us to stay within the bounds of our input array and only check elements that exist.
     Since the index is going to change, make sure to make it a let variable. */
-    for(let i = 0; i < input.length - 1; i++) {
-
+    for(let i = 0; i < input.length - 1; i++) { // The for loop should visit every element in the input array starting from the first element and stopping at the second-to-last element.
+      
     }
   }
+  /*Lastly, bubbleSort() should return a sorted input array, (we’ll do the actual sorting in a later exercise).
+  Add code to return the sorted input array if we’ve exited our while loop. */
+  return input; // return the sorted input array if we’ve exited our while loop.
+
 };
 
 module.exports = bubbleSort;
