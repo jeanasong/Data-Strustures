@@ -24,7 +24,16 @@ const bubbleSort = input => {
     Setting the condition for the loop this way allows us to stay within the bounds of our input array and only check elements that exist.
     Since the index is going to change, make sure to make it a let variable. */
     for(let i = 0; i < input.length - 1; i++) { // The for loop should visit every element in the input array starting from the first element and stopping at the second-to-last element.
-      
+      /* Compare
+      We have a loop to run our algorithm, and another that visits each element in the input array but if we were to run this as is, it would only iterate through the array once.
+      Let’s add some additional logic to our code in the bubbleSort.js file that will compare neighboring elements and swap them if necessary. For this exercise, you’ll only be adding code inside of the for loop of bubbleSort(). */
+      if(input[i] > input[i + 1]) { // Inside of the for loop we added, create a conditional that checks if the element at the current index is greater than the element one index after it.
+        // Let’s begin adding the logic for the swapping action. To see how we’re changing our input array by swapping elements, add the following inside of the if statement you created:
+        console.log(`Swapping pair ${input[i]}, ${input[i+1]} in [${input}]`); // This code will log a message for every swap made when we execute bubbleSort().
+        swap(input, i, i + 1); // Swap unordered pairs. After our logging statement, add a call to swap(), the helper function that handles changing the position of pairs of elements. Take a look at the parameters of swap() in the swap.js file to see what arguments you need to call it with.
+        // If we make a swap, we want to loop through the array again to see if we need to make additional swaps to continue “bubbling up” elements in the wrong position. Keep our while loop running by changing the value of the while condition variable so that it evaluates as true.
+        swapping = true; // Keep our while loop running by changing the value of the while condition variable so that it evaluates as true.
+      }
     }
   }
   /*Lastly, bubbleSort() should return a sorted input array, (we’ll do the actual sorting in a later exercise).
@@ -34,3 +43,4 @@ const bubbleSort = input => {
 };
 
 module.exports = bubbleSort;
+
