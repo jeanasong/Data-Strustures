@@ -41,3 +41,104 @@ Another popular strategy is to take the first, middle, and last elements of the 
 Quicksort is an unusual algorithm in that the worst case runtime is O(N^2), but the average case is O(N * logN).
 
 We typically only discuss the worst case when talking about an algorithm’s runtime, but for Quicksort it’s so uncommon that we generally refer to it as O(N * logN).
+
+
+
+Quicksort Review
+Quicksort is an efficient algorithm for sorting values in a list. A single element, the pivot, is chosen from the list. All the remaining values are partitioned into two sub-lists containing the values smaller than and greater than the pivot element.
+
+Ideally, this process of dividing the array will produce sub-lists of nearly equal length, otherwise, the runtime of the algorithm suffers.
+
+When the dividing step returns sub-lists that have one or less elements, each sub-list is sorted. The sub-lists are recombined, or swaps are made in the original array, to produce a sorted list of values.
+
+Instructions
+Quicksort is a classic sorting algorithm with an excellent average runtime. Understanding the strategy behind quicksort will improve your ability to reason about sorting algorithms.
+
+
+
+Partitioning Part I - The Pivot Element
+Partitioning is the crux of the quicksort algorithm. Without it, we wouldn’t know how to split our unsorted array into useful partitions.
+
+This procedure utilizes two internal indices, leftIndex and rightIndex that move in opposite directions. These indices are used for:
+
+computing the pivot element
+comparing the elements located at each index with the pivot element
+determining the pivot index, the desired location of the pivot element in the set after elements have been swapped, if any
+The basic idea of partitioning is as follows:
+
+Start with the middle element
+While you haven’t looked through the whole array (leftIndex is still < rightIndex)
+move leftIndex up until you find something greater than the pivot
+move rightIndex down until you find something less than the pivot
+swap those elements, and move the indices in by one step so to continue checking if swaps are necessary
+return the last left element index
+An initial pivot element can be arbitrarily chosen in the beginning of the partitioning process to be one of the following by default:
+
+first element of the array
+last element of the array
+middle element of the array
+random element of the array
+The final location of the pivot element will be determined at the end of the partitioning process.
+
+In some quicksort implementations, the first or last element is commonly picked as the pivot element. In our JavaScript implementation, we will use the middle element instead because it provides a better average runtime. To do this, we will need both leftIndex and rightIndex.
+
+pivot = the average of the sum of leftIndex and rightIndex rounded down
+
+
+
+
+
+Partitioning Part II - The Left and Right Indices
+The leftIndex and rightIndex of a set or subset are going to set the bounds of the partition. For the first iteration, both indices mark the entire span of the original data set. In the following illustrations, L and R represent leftIndex and rightIndex respectively.
+
+[ 3, 1, 4, 2, 8, 9 ]
+  L     P        R
+The pivot element for this set will be 4 as it is located near the halfpoint of the data set and indicated by P.
+
+Next, we want to compare the element at leftIndex with the pivot element, 4. As long as it is less than the pivot, meaning that it is in the correct half of the partition, we want to move the leftIndex forward one step to the right.
+
+3 < 4, move L forward
+[ 3, 1, 4, 2, 8, 9 ]
+     L  P        R
+1 < 4, move L forward
+[ 3, 1, 4, 2, 8, 9 ]
+        L        R
+        P
+4 = 4, stop
+We stop leftIndex at position 2 because the element at index 2 (4) is not less than the pivot element 4. Next, we switch focus to the rightIndex and compare the element at rightIndex with the pivot element, 4. As long as it is greater than the pivot, we want to move the rightIndex backward one step to the left.
+
+[ 3, 1, 4, 2, 8, 9 ]
+        L        R
+        P
+9 > 4, move R backward
+[ 3, 1, 4, 2, 8, 9 ]
+        L     R
+        P
+8 > 4, move R backward
+[ 3, 1, 4, 2, 8, 9 ]
+        L  R
+        P
+2 < 4, stop
+We stop the rightIndex at position 3 because the element at 3 (2) is not greater than the pivot element 4. This tells us that 2 does not belong in its current position because it should be on the left of the pivot element 4. In this case, we need to swap the elements at leftIndex and rightIndex.
+
+
+
+Partitioning Part III - Swapping
+Recall that our leftIndex and rightIndex were at 2 and 3 respectively. They cannot move any further because their respective elements are greater than or less than the pivot element. When this happens, we need to swap those elements so that they will end up at the correct side of the partition.
+
+[ 3, 1, 4, 2, 8, 9 ]
+        L  R
+        P
+swap 4 and 2
+[ 3, 1, 2, 4, 8, 9 ]
+        L  R
+        P
+After we swap them, we move L forward and R backward.
+
+Move L forward and R backward
+[ 3, 1, 2, 4, 8, 9 ]
+        R  L
+        P
+We return to our outer while loop condition to check if leftIndex (3) is less than or equal to rightIndex (2). In this case, 3 > 2, so we exit the while loop.
+
+At this juncture, the elements that are less than the pivot are to the left of it and the elements that are greater than the pivot are to the right of it. We can stop partitioning and return the leftIndex which points to the pivot element 4. Hence, our pivot index is 3 which is also the leftIndex.
