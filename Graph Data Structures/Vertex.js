@@ -21,7 +21,9 @@ A Graph can add and remove its own vertices.
 
 A Graph can add and remove edges between stored vertices.
 
-Let’s start with familiarizing ourselves with the classes that we will build in Vertex.js and Graph.js. We already set up .print() methods for you that will print out the state of the graph structure. Don’t worry about the class in Edge.js yet. We will use it to connect the vertices in a later exercise.
+Let’s start with familiarizing ourselves with the classes that we will build in Vertex.js and Graph.js. 
+We already set up .print() methods for you that will print out the state of the graph structure. 
+Don’t worry about the class in Edge.js yet. We will use it to connect the vertices in a later exercise.
 
 To keep the concepts grounded in a real-world application, we’ll build a transportation network of railroads and train stations as we go. */
 
@@ -29,7 +31,13 @@ To keep the concepts grounded in a real-world application, we’ll build a trans
 const Edge = require('./Edge.js');
 
 class Vertex {
-  
+    /*Let’s start by setting up the constructor for our Vertex class. When a vertex is first created, it should hold any given data, and it should have an empty list of edges because it does not have any connections.
+
+    In the constructor, expect a data parameter and set it to the data class property. Then, set the edges class property to an empty array. */
+    constructor(data) { // create a constructor with data as a parameter
+        this.data = data; // set it to the data class property
+        this.edges = []; // set the edges class property to an empty array
+      }
   
   print() {
     const edgeList = this.edges.map(edge =>
