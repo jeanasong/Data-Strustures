@@ -23,6 +23,17 @@ class Graph {
     
         return newVertex; // return the newly created Vertex to signal to the method caller that a vertex was successfully created and added to the list.
       }
+
+      // Removing Vertices
+      /* We also want our Graph to manage its own vertex removal, just like how it handles its own vertex creation.
+      We will use the .removeVertex() method to look for the requested vertex and remove it from the list of vertices.
+      
+      Inside the Graph class, implement the .removeVertex() method that accepts the vertex to be removed as a parameter. 
+      Iterate through the list of vertices and remove the vertex that is strictly equal to the vertex given in the parameter. */
+      removeVertex(vertex) {
+        // Iterate through the list of vertices and remove the vertex that is strictly equal to the vertex given in the parameter.
+        this.vertices = this.vertices.filter(v => v !== vertex);
+      }
   
   print() {
     const vertexList = this.vertices || [];
@@ -33,6 +44,11 @@ class Graph {
 const trainNetwork = new Graph();
 const atlantaStation = trainNetwork.addVertex('Atlanta');
 const newYorkStation = trainNetwork.addVertex('New York');
+
+/* Underneath our Graph class, let’s remove the Atlanta vertex we added in the previous exercise using the trainNetwork‘s .removeVertex() method. 
+Remember to do it before the call to .print() so we can see what the resulting graph looks like.
+We should see our graph with only the New York vertex remaining, and no edges. */
+trainNetwork.removeVertex(atlantaStation);
 
 trainNetwork.print();
 
