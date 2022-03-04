@@ -38,6 +38,17 @@ class Vertex {
         this.data = data; // set it to the data class property
         this.edges = []; // set the edges class property to an empty array
       }
+      // Connecting Vertices with Edges
+      /*In our Vertex class, create the .addEdge() method that expects a vertex parameter, which will represent the other end of the edge. It must be an instanceof a Vertex, otherwise we should throw an error. 
+      Then, create an Edge instance to represent the connection from this vertex to the ending vertex.
+      Add the Edge instance to the vertex’s list of edges to open up our first connection from one vertex to another. */
+      addEdge(vertex) {
+        if(vertex instanceof Vertex) {
+          this.edges.push(new Edge(this, vertex));
+        } else {
+          throw new Error('Edge start and end must both be Vertex');
+        }
+      }
   
   print() {
     const edgeList = this.edges.map(edge =>
