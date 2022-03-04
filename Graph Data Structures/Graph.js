@@ -34,6 +34,19 @@ class Graph {
         // Iterate through the list of vertices and remove the vertex that is strictly equal to the vertex given in the parameter.
         this.vertices = this.vertices.filter(v => v !== vertex);
       }
+
+      /* Connecting Vertices with Edges
+      We’re ready to connect vertices with edges through our Graph class. In the Graph class, create an .addEdge() method, which will create edges between the parameters, vertexOne and vertexTwo.
+      If the parameters are both an instanceof a Vertex, use the vertices’ .addEdge() method to create an edge between the other vertex. Remember to add edges between both vertices.
+      Otherwise, throw an error if either of them are not. */
+      addEdge(vertexOne, vertexTwo) {
+        if(vertexOne instanceof Vertex && vertexTwo instanceof Vertex) {
+          vertexOne.addEdge(vertexTwo);
+          vertexTwo.addEdge(vertexOne);
+        } else {
+          throw new Error('Expected Vertex arguments');
+        }
+      }
   
   print() {
     const vertexList = this.vertices || [];
