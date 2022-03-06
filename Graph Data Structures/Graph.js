@@ -61,7 +61,11 @@ const newYorkStation = trainNetwork.addVertex('New York');
 /* Underneath our Graph class, let’s remove the Atlanta vertex we added in the previous exercise using the trainNetwork‘s .removeVertex() method. 
 Remember to do it before the call to .print() so we can see what the resulting graph looks like.
 We should see our graph with only the New York vertex remaining, and no edges. */
-trainNetwork.removeVertex(atlantaStation);
+//trainNetwork.removeVertex(atlantaStation);
+
+/*Let’s verify that we can successfully create an edge between two vertices through the Graph class. Under the Graph class, there are two Vertex instances: atlantaStation and newYorkStation.
+Before the trainNetwork is printed, use the trainNetwork’s .addEdge() method to create an edge between the two vertices. We should see Atlanta connect to New York, and New York connect to Atlanta. */
+trainNetwork.addEdge(atlantaStation, newYorkStation);
 
 trainNetwork.print();
 
