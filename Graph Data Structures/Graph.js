@@ -47,6 +47,19 @@ class Graph {
           throw new Error('Expected Vertex arguments');
         }
       }
+
+      /* Removing Vertex Connections
+      We’re ready to remove an edge between vertices through our Graph class. In the Graph class, create the .removeEdge() method that removes the edge between two given vertices.
+      It should expect the vertices as two parameters: vertexOne and vertexTwo. Throw an error if either of them are not Vertex instances. 
+      Then use the vertices’ .removeEdge() method to remove the edge between the other vertex. Remember to do this for both vertices. */
+      removeEdge(vertexOne, vertexTwo) {
+        if(vertexOne instanceof Vertex && vertexTwo instanceof Vertex) {
+          vertexOne.removeEdge(vertexTwo);
+          vertexTwo.removeEdge(vertexOne);
+        } else {
+          throw new Error('Expected Vertex arguments');
+        }
+      }
   
   print() {
     const vertexList = this.vertices || [];
@@ -68,6 +81,12 @@ We should see our graph with only the New York vertex remaining, and no edges. *
 Let’s verify that we can successfully create an edge between two vertices through the Graph class. Under the Graph class, there are two Vertex instances: atlantaStation and newYorkStation.
 Before the trainNetwork is printed, use the trainNetwork’s .addEdge() method to create an edge between the two vertices. We should see Atlanta connect to New York, and New York connect to Atlanta. */
 trainNetwork.addEdge(atlantaStation, newYorkStation);
+
+/*Let’s verify that we can successfully remove an edge between two vertices through the Graph class. 
+After the edge between Atlanta and New York is added, remove the edges between the two cities. 
+Call the trainNetwork’s .removeEdge() with atlantaStation and newYorkStation.
+We should see that the atlantaStation and newYorkStation vertices have no edge connections. */
+trainNetwork.removeEdge(atlantaStation, newYorkStation);
 
 trainNetwork.print();
 
