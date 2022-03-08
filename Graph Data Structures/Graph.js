@@ -3,10 +3,15 @@ const Vertex = require('./Vertex.js');
 
 class Graph {
     /*Moving on to the constructor for our Graph class, a graph is essentially a collection of vertices and edges. Our graph only needs to keep track of a list of vertices.
-
-    In the Graph class in Graph.js, create a constructor that takes no parameters. Since a graph doesn’t have any vertices when it is first created, set the vertices property to an empty array in the constructor. */
-    constructor() { // create a constructor that takes no parameters
+    In the Graph class in Graph.js, create a constructor that takes no parameters. Since a graph doesn’t have any vertices when it is first created, set the vertices property to an empty array in the constructor. 
+    
+    Weighted Graphs
+    The current implementation of our Graph class is unweighted, where there is no cost associated with the edge that connects the vertices together. Since we want our Graph to be flexible, we should give the option for weights to be added to the edge when a new edge is created.
+    In the Graph class, add an isWeighted boolean parameter in the constructor for the user to designate that the graph is weighted. It should default to false if no argument is given.
+    Set the argument to the isWeighted class property.*/
+    constructor(isWeighted = false) { // add an isWeighted boolean parameter in the constructor for the user to designate that the graph is weighted. It should default to false if no argument is given.
         this.vertices = []; // Since a graph doesn’t have any vertices when it is first created, set the vertices property to an empty array in the constructor.
+        this.isWeighted = isWeighted; // Set the argument to the isWeighted class property.
       }
 
       // Adding Vertices
@@ -38,11 +43,16 @@ class Graph {
       /* Connecting Vertices with Edges
       We’re ready to connect vertices with edges through our Graph class. In the Graph class, create an .addEdge() method, which will create edges between the parameters, vertexOne and vertexTwo.
       If the parameters are both an instanceof a Vertex, use the vertices’ .addEdge() method to create an edge between the other vertex. Remember to add edges between both vertices.
-      Otherwise, throw an error if either of them are not. */
-      addEdge(vertexOne, vertexTwo) {
+      Otherwise, throw an error if either of them are not. 
+      
+      Weighted Graphs
+      Next, we should feed in the weight argument to the calls to Vertex‘s .addEdge() method from the Graph‘s .addEdge() method if the graph is weighted.
+      In the Graph class, add a third parameter for weight in the .addEdge() method. Create a variable edgeWeight, and set it to the weight argument if the graph is weighted, otherwise set it to null. 
+      Pass edgeWeight to the calls that create edges between the given vertices. Remember to do this for both calls.*/
+      addEdge(vertexOne, vertexTwo, weight) {
         if(vertexOne instanceof Vertex && vertexTwo instanceof Vertex) {
-          vertexOne.addEdge(vertexTwo);
-          vertexTwo.addEdge(vertexOne);
+          vertexOne.addEdge(vertexTwo, weight); // Pass edgeWeight to the calls that create edges between the given vertices. Remember to do this for both calls.
+          vertexTwo.addEdge(vertexOne, weight); // Pass edgeWeight to the calls that create edges between the given vertices. Remember to do this for both calls.
         } else {
           throw new Error('Expected Vertex arguments');
         }
@@ -70,6 +80,12 @@ class Graph {
 const trainNetwork = new Graph();
 const atlantaStation = trainNetwork.addVertex('Atlanta');
 const newYorkStation = trainNetwork.addVertex('New York');
+
+/* Weighted Graphs
+Let’s verify that the Graph can add weights to the edges by adding an edge between atlantaStation and newYorkStation. In Graph.js, edit trainNetwork to be weighted. 
+Then call the its .addEdge() method and pass in a value of 800 as an argument, to represent the number of miles between the two train stations.
+When we call the trainNetwork’s .print() method to print out the resulting graph, we should see that the edge between Atlanta and New York has a value of 800. */
+trainNetwork.addEdge(atlantaStation, newYorkStation, 800);
 
 /*
 Underneath our Graph class, let’s remove the Atlanta vertex we added in the previous exercise using the trainNetwork‘s .removeVertex() method. 
