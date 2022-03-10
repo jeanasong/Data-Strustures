@@ -9,9 +9,10 @@ class Graph {
     The current implementation of our Graph class is unweighted, where there is no cost associated with the edge that connects the vertices together. Since we want our Graph to be flexible, we should give the option for weights to be added to the edge when a new edge is created.
     In the Graph class, add an isWeighted boolean parameter in the constructor for the user to designate that the graph is weighted. It should default to false if no argument is given.
     Set the argument to the isWeighted class property.*/
-    constructor(isWeighted = false) { // add an isWeighted boolean parameter in the constructor for the user to designate that the graph is weighted. It should default to false if no argument is given.
+    constructor(isWeighted = false, isDirected = false) { // add an isWeighted boolean parameter in the constructor for the user to designate that the graph is weighted. It should default to false if no argument is given.
         this.vertices = []; // Since a graph doesn’t have any vertices when it is first created, set the vertices property to an empty array in the constructor.
         this.isWeighted = isWeighted; // Set the argument to the isWeighted class property.
+        this.isDirected = isDirected; // Set the argument to the isDirected class property
       }
 
       // Adding Vertices
