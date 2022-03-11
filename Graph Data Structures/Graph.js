@@ -53,7 +53,10 @@ class Graph {
       addEdge(vertexOne, vertexTwo, weight) {
         if(vertexOne instanceof Vertex && vertexTwo instanceof Vertex) {
           vertexOne.addEdge(vertexTwo, weight); // Pass edgeWeight to the calls that create edges between the given vertices. Remember to do this for both calls.
-          vertexTwo.addEdge(vertexOne, weight); // Pass edgeWeight to the calls that create edges between the given vertices. Remember to do this for both calls.
+          // vertexTwo.addEdge(vertexOne, weight); // Pass edgeWeight to the calls that create edges between the given vertices. Remember to do this for both calls.
+          if(!this.isDirected) {
+            vertexTwo.addEdge(vertexOne, edgeWeight);
+          }
         } else {
           throw new Error('Expected Vertex arguments');
         }
@@ -66,7 +69,10 @@ class Graph {
       removeEdge(vertexOne, vertexTwo) {
         if(vertexOne instanceof Vertex && vertexTwo instanceof Vertex) {
           vertexOne.removeEdge(vertexTwo);
-          vertexTwo.removeEdge(vertexOne);
+          // vertexTwo.removeEdge(vertexOne);
+          if(!this.isDirected) {
+            vertexTwo.removeEdge(vertexOne);
+          }
         } else {
           throw new Error('Expected Vertex arguments');
         }
@@ -78,7 +84,7 @@ class Graph {
   }
 }
 
-const trainNetwork = new Graph();
+const trainNetwork = new Graph(false, true);
 const atlantaStation = trainNetwork.addVertex('Atlanta');
 const newYorkStation = trainNetwork.addVertex('New York');
 
