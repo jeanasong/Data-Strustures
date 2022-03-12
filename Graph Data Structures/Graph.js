@@ -8,7 +8,11 @@ class Graph {
     Weighted Graphs
     The current implementation of our Graph class is unweighted, where there is no cost associated with the edge that connects the vertices together. Since we want our Graph to be flexible, we should give the option for weights to be added to the edge when a new edge is created.
     In the Graph class, add an isWeighted boolean parameter in the constructor for the user to designate that the graph is weighted. It should default to false if no argument is given.
-    Set the argument to the isWeighted class property.*/
+    Set the argument to the isWeighted class property.
+    
+    Directed Graphs
+    The main difference between the undirected graph and directed graph is that our undirected graph uses two edges going in opposite directions to indicate that there is a connection between two vertices.
+    */
     constructor(isWeighted = false, isDirected = false) { // add an isWeighted boolean parameter in the constructor for the user to designate that the graph is weighted. It should default to false if no argument is given.
         this.vertices = []; // Since a graph doesn’t have any vertices when it is first created, set the vertices property to an empty array in the constructor.
         this.isWeighted = isWeighted; // Set the argument to the isWeighted class property.
@@ -49,12 +53,16 @@ class Graph {
       Weighted Graphs
       Next, we should feed in the weight argument to the calls to Vertex‘s .addEdge() method from the Graph‘s .addEdge() method if the graph is weighted.
       In the Graph class, add a third parameter for weight in the .addEdge() method. Create a variable edgeWeight, and set it to the weight argument if the graph is weighted, otherwise set it to null. 
-      Pass edgeWeight to the calls that create edges between the given vertices. Remember to do this for both calls.*/
+      Pass edgeWeight to the calls that create edges between the given vertices. Remember to do this for both calls.
+      
+      Directed Graphs
+      We only want to create one edge that points in one direction between two vertices for directed graphs.
+      Modify the Graph‘s .addEdge() method to create the edge from vertexTwo to vertexOne only if this isDirected property is false.*/
       addEdge(vertexOne, vertexTwo, weight) {
         if(vertexOne instanceof Vertex && vertexTwo instanceof Vertex) {
           vertexOne.addEdge(vertexTwo, weight); // Pass edgeWeight to the calls that create edges between the given vertices. Remember to do this for both calls.
           // vertexTwo.addEdge(vertexOne, weight); // Pass edgeWeight to the calls that create edges between the given vertices. Remember to do this for both calls.
-          if(!this.isDirected) {
+          if(!this.isDirected) { // Modify the Graph‘s .addEdge() method to create the edge from vertexTwo to vertexOne only if this isDirected property is false.
             vertexTwo.addEdge(vertexOne, edgeWeight);
           }
         } else {
@@ -65,7 +73,11 @@ class Graph {
       /* Removing Vertex Connections
       We’re ready to remove an edge between vertices through our Graph class. In the Graph class, create the .removeEdge() method that removes the edge between two given vertices.
       It should expect the vertices as two parameters: vertexOne and vertexTwo. Throw an error if either of them are not Vertex instances. 
-      Then use the vertices’ .removeEdge() method to remove the edge between the other vertex. Remember to do this for both vertices. */
+      Then use the vertices’ .removeEdge() method to remove the edge between the other vertex. Remember to do this for both vertices. 
+      
+      Directed Graphs
+      Just as we only want to create one edge between vertices in a directed graph, we also want to remove only one edge between vertices.
+      Modify the Graph‘s .removeEdge() method to remove the edge from vertexTwo to vertexOne if this isDirected property is false.*/
       removeEdge(vertexOne, vertexTwo) {
         if(vertexOne instanceof Vertex && vertexTwo instanceof Vertex) {
           vertexOne.removeEdge(vertexTwo);
@@ -84,7 +96,10 @@ class Graph {
   }
 }
 
-const trainNetwork = new Graph(false, true);
+/* Directed Graphs
+Finally, let’s modify our train network to only travel in one direction: from New York to Atlanta. Modify the trainNetwork to be unweighted and directed. Pass false for the first argument and true for the second.
+We should see only one edge connection going from Atlanta to New York. New York should have no edges going out. */
+const trainNetwork = new Graph(false, true); // Modify the trainNetwork to be unweighted and directed. Pass false for the first argument and true for the second.
 const atlantaStation = trainNetwork.addVertex('Atlanta');
 const newYorkStation = trainNetwork.addVertex('New York');
 
@@ -105,10 +120,14 @@ Let’s verify that we can successfully create an edge between two vertices thro
 Before the trainNetwork is printed, use the trainNetwork’s .addEdge() method to create an edge between the two vertices. We should see Atlanta connect to New York, and New York connect to Atlanta. */
 trainNetwork.addEdge(atlantaStation, newYorkStation);
 
-/*Let’s verify that we can successfully remove an edge between two vertices through the Graph class. 
+/* Let’s verify that we can successfully remove an edge between two vertices through the Graph class. 
 After the edge between Atlanta and New York is added, remove the edges between the two cities. 
 Call the trainNetwork’s .removeEdge() with atlantaStation and newYorkStation.
-We should see that the atlantaStation and newYorkStation vertices have no edge connections. */
+We should see that the atlantaStation and newYorkStation vertices have no edge connections. 
+
+Directed Graphs
+Last, but not least, we should test out our edge removal. Call .removeEdge() on the trainNetwork graph to remove the edge between atlantaStation and newYorkStation.
+When we print out the resulting graph, Atlanta and New York should have no connections.*/
 trainNetwork.removeEdge(atlantaStation, newYorkStation);
 
 trainNetwork.print();
