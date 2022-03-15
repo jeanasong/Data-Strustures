@@ -10,18 +10,21 @@ DFS has many applications, including topological sorting and detecting cycles, b
 
 Breadth-First Search
 On the other hand, a breadth-first graph search approach checks the values of all neighboring vertices before moving into another level of depth. 
-This is an incredibly inefficient way to find just any path between two vertices, but it’s an excellent way to identify the shortest path between them. Because of this, BFS is helpful for figuring out directions from one place to another.
+This is an incredibly inefficient way to find just any path between two vertices, but it’s an excellent way to identify the shortest path between them. 
+Because of this, BFS is helpful for figuring out directions from one place to another.
 
 Dijkstra’s Algorithm
 Dijkstra’s algorithm is a method for finding the shortest distance from a given point to every other point in a weighted graph. 
-The algorithm works by keeping track of all the distances and updating the distances as it conducts a breadth-first search. A common application of this algorithm is to find the quickest route from one destination to another.
+The algorithm works by keeping track of all the distances and updating the distances as it conducts a breadth-first search. 
+A common application of this algorithm is to find the quickest route from one destination to another.
 
 
 
 GRAPH SEARCH: CONCEPTUAL
 
 Graph Search Conceptual Introduction
-Using graphs to model complex networks is pretty swell, but one way that graphs can really come in handy is with graph search algorithms. You can use a graph search algorithm to traverse the entirety of a graph data structure in search of a specific vertex value.
+Using graphs to model complex networks is pretty swell, but one way that graphs can really come in handy is with graph search algorithms. 
+You can use a graph search algorithm to traverse the entirety of a graph data structure in search of a specific vertex value.
 
 There are two common approaches to using a graph search to progress through a graph:
 
@@ -32,3 +35,30 @@ To enable searching, we add vertices to a list, visited. This list is pretty imp
 So how do you calculate the runtime for graph search algorithms?
 
 In an upper bound scenario, we would be looking at every vertex and every edge. Because of this, the big O runtime for both depth-first search and breadth-first search is O(vertices + edges).
+
+
+
+Depth-First Search (DFS) Conceptual
+Imagine you’re in a car, on the road with your friend, “D.” D is on a mission to get to your destination by process of elimination. D won’t stop and ask for directions. D just sticks to a chosen path until you reach the end.
+
+At that point, if the end wasn’t actually your destination, D brings you back to the last point when there was an intersection and tries another path.
+
+Like your friend D, depth-first search algorithms check the values along a path of vertices before moving to another path.
+
+While this isn’t exactly ideal when you want to find the shortest path between two points, DFS can be very helpful for determining if a path even exists.
+
+In order to accomplish this path-finding feat, DFS implementations use either a stack data structure or, more commonly, recursion to keep track of the path the search is on and the current vertex.
+
+In a stack implementation, the most recently added vertex is popped off the stack when the search has reached the end of the path. Meanwhile, in a recursive implementation, the DFS function is recursively called for each connected vertex.
+
+
+
+Breadth-First Search (BFS) Conceptual
+You’re back in a car, but this time, your friend “B” is navigating. Unlike D, B is a bit hesitant about whether you’ve gone the right way and keeps checking in to see if you are on the best path. 
+At each intersection, B tries out each possible route one by one, but only for a block in each direction to see if you’ve found your destination.
+
+Like B, breadth-first search, known as BFS, checks the values of all neighboring vertices before moving into another level of depth.
+
+This is an incredibly inefficient way to find just any path between two points, but it’s an excellent way to identify the shortest path between two vertices. Because of this, BFS is helpful for figuring out directions from one place to another.
+
+Unlike DFS, BFS graph search implementations use a queue data structure to keep track of the current vertex and vertices that still have unvisited neighbors. In BFS graph search a vertex is dequeued when all neighboring vertices have been visited.
