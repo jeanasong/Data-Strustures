@@ -1,0 +1,34 @@
+Graph Traversals
+Get started with graph traversal!
+
+There are many ways to traverse a graph, but you will focus on three methods: depth-first search (DFS), breadth-first search (BFS), and Dijkstra’s algorithm. 
+These traversal methods are core algorithms for searching a graph.
+
+Depth-First Search
+Simply put, a depth-first graph search continues down a path until it reaches the end. It is helpful for determining if a path exists between two vertices. 
+DFS has many applications, including topological sorting and detecting cycles, but one of the more interesting real-world applications is that it can be used to solve problems that have a singular correct answer (a path between the start state and end state), such as a sudoku exercise.
+
+Breadth-First Search
+On the other hand, a breadth-first graph search approach checks the values of all neighboring vertices before moving into another level of depth. 
+This is an incredibly inefficient way to find just any path between two vertices, but it’s an excellent way to identify the shortest path between them. Because of this, BFS is helpful for figuring out directions from one place to another.
+
+Dijkstra’s Algorithm
+Dijkstra’s algorithm is a method for finding the shortest distance from a given point to every other point in a weighted graph. 
+The algorithm works by keeping track of all the distances and updating the distances as it conducts a breadth-first search. A common application of this algorithm is to find the quickest route from one destination to another.
+
+
+
+GRAPH SEARCH: CONCEPTUAL
+
+Graph Search Conceptual Introduction
+Using graphs to model complex networks is pretty swell, but one way that graphs can really come in handy is with graph search algorithms. You can use a graph search algorithm to traverse the entirety of a graph data structure in search of a specific vertex value.
+
+There are two common approaches to using a graph search to progress through a graph:
+
+depth-first search, known as DFS follows each possible path to its end
+breadth-first search, known as BFS broadens its search from the point of origin to an ever-expanding circle of neighboring vertices
+To enable searching, we add vertices to a list, visited. This list is pretty important because it keeps the search from visiting the same vertex multiple times! This is particularly vital for cyclical graphs where you might otherwise end up in an infinite loop.
+
+So how do you calculate the runtime for graph search algorithms?
+
+In an upper bound scenario, we would be looking at every vertex and every edge. Because of this, the big O runtime for both depth-first search and breadth-first search is O(vertices + edges).

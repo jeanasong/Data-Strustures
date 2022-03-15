@@ -1,4 +1,4 @@
-const Edge = require('./Edge.js');
+const Edge = require('./Graphs/Edge.js');
 const Vertex = require('./Vertex.js');
 
 class Graph {
