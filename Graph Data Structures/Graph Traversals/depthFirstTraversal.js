@@ -9,6 +9,8 @@ We have also set up a sample graph in testGraph.js for you to test the traversal
 
 const testGraph = require('./testGraph.js');
 
+// Traversal throgh all the path
+
 /*Let’s start by setting up our traversal function. Since it will be used to traverse a graph, we can expect for the graph to be provided in the form of the starting vertex.
 We’ve provided an empty depthFirstTraversal() function. Add a vertex parameter, start, and print out the parameter’s data property so we can see which vertex we are on. 
 
@@ -46,7 +48,6 @@ const depthFirstTraversal = (start, visitedVertices = [start]) => { // Add a ver
             depthFirstTraversal(neighbor, visitedVertices); // Call the depthFirstTraversal() function if the start vertex has neighbors left to traverse. Make sure to pass in the neighbor vertex to the recursive call so that we can go down the path and iterate through the neighbor’s first connected vertex.
         }
       }
-
 };
 
 depthFirstTraversal(testGraph.vertices[0]);
