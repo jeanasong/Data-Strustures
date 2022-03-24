@@ -1,3 +1,4 @@
+/*Need to import from the correct file */
 const LinkedList = require('./LinkedList');
 
 class Queue {
