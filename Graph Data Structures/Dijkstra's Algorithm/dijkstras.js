@@ -21,7 +21,8 @@ We have also set up a test graph for you in testGraph.js to test the output of t
 
 const testGraph = require('./testGraph.js');
 
-/*To begin, we need to provision our dijkstras() function with two parameters: graph and startingVertex. graph is the actual data structure instance. 
+/* Setup
+To begin, we need to provision our dijkstras() function with two parameters: graph and startingVertex. graph is the actual data structure instance. 
 startingVertex indicates the starting point from which we will construct the paths.
 
 In the dijkstras() function, specify the graph as the first parameter and startingVertex as the second parameter. */
@@ -49,6 +50,34 @@ const dijkstras = (graph, startingVertex) => {
     /*Now, you may be wondering, “but the distance from the starting vertex to the starting vertex is 0, not Infinity!” Let’s resolve this by adjusting the initial distance for the starting vertex.
     After we finish iterating through the graph’s vertices, set the distance of the startingVertex.data in distances to 0. */
     distances[startingVertex.data] = 0;
+
+    /* Evaluate Paths to Starting Vertex’s Neighbors
+    We have all of our records set up, so we can start traversing through the graph and evaluating the distances from the starting vertex to its neighbors.
+    In the evaluation of each neighbor, we compare the distance of the new path to the distance of the previous path. If the distance of the new path is shorter, we will update our records of distances and previous vertices with the new path.
+
+    Every time we evaluate an edge between a vertex and its neighbor, the if condition ensures that the record will always maintain the shortest path among the evaluations so far. This is why we can use the previously recorded distance for comparison in our evaluation.
+
+    Let’s start evaluating the distances to the starting vertex’s neighbors by iterating through its list of edges.
+    Right before we return the recorded results, create a const variable, vertex, and set it to startingVertex. Then use a .forEach() iterator to go through the vertex’s list of edges. We will use the edge argument for this iterator. */
+    const vertex = startingVertex; // create a const variable, vertex, and set it to startingVertex.
+    vertex.edges.forEach((edge) => { // Then use a .forEach() iterator to go through the vertex’s list of edges. We will use the edge argument for this iterator.
+        /* Now we can compare the distance of the new alternate path to the distance of the last recorded path to the neighbor. The distance of the neighbor’s last recorded path is in the distances object at the neighbor’s data.
+        Let’s use a variable to hold the key that we will use to access the neighbor’s distance in distances. This will help with code readability. */
+        const alternate = edge.weight + distances[vertex.data]; // set it to the sum of the edge’s weight and the value of the vertex’s distance in distances.
+        const neighborValue = edge.end.data; // Still in the .forEach(), create a const variable, neighborValue, and set it to the data property of the neighbor, which is located in the end property of the edge.
+        if(alternate < distances[neighborValue]) { // Set up an if condition that checks if the alternate distance is shorter than the value at neighborValue in distances.
+            /*If the condition is satisfied, then we have found a shorter path and should update the neighbor’s recorded distance and previous vertex.
+            If the alternate path is shorter, set distances at the neighborValue to the new alternate cost. We also want to set the previous vertex at the neighborValue to vertex. */
+            distances[neighborValue] = alternate; // If the alternate path is shorter, set distances at the neighborValue to the new alternate cost. We also want to set the previous vertex at the neighborValue to vertex.
+            previous[neighborValue] = vertex; // We also want to set the previous vertex at the neighborValue to vertex.
+
+            /* When we evaluate the distances, we are determining if the path from the starting vertex to the neighbor is shorter than the previously evaluated distance. 
+            Since we have not evaluated any paths to the neighbors yet, the previously recorded distances to all of the neighbors is Infinity.
+            Run the code and look at the output of the function. The shortest paths evaluated so far should be the paths from the starting vertex to its neighbors. 
+            In distances we should see the starting vertex with a distance of 0, its neighbors set to the evaluated distances, and all other vertices with Infinity distances. 
+            In previous, we should see the neighbors with the starting vertex as their previous vertex, and all other vertices with null. */
+        }
+    })
 
     /* Great! Now we want to return the results of our evaluations in distances and previous. This allows for the user who makes a call to our function to use these computed values.
     You can return both values by returning an object with distances and previous keys set to their respective variables.*/
