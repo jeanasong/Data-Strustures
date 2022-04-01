@@ -1,0 +1,19 @@
+TECHNICAL INTERVIEWS: WHITEBOARDING
+Analyzing Time and Space Complexity
+You’re satisfied with your implementation and you’ve demonstrated how it works, but you’re not quite done.
+
+Analyze the time and space complexity of the solution. With this step you are demonstrating that you care about the efficiency of your code.
+
+Explain your code’s big O notation. If you can optimize to a more efficient runtime, explain how that would work. 
+If you can’t optimize, explain why it’s not possible.
+
+Instructions
+Talk through the big O time and space complexity of your solution.
+
+Explain how an optimization would be possible or not.
+
+
+
+Technical Interview Solution Efficiency
+In the last step of the technical interview process, we discuss the efficiency of our coded solution in terms of time and space complexity. 
+If improvements can be made, we do it. Otherwise, we can explain and justify our implementation.
