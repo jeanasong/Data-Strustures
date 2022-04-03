@@ -9,6 +9,7 @@ The naive solution to the problem is to:
 6. Add the difference to the total amount of water
 In JavaScript this looks like this: */
 
+// In JavaScript this looks like this:
 function naiveSolution(heights) {
     let totalWater = 0;
     for (let i = 1; i < heights.length - 1; i++) {
@@ -26,3 +27,6 @@ function naiveSolution(heights) {
     }
     return totalWater;
   }
+
+  /* While this is a functional solution, it requires nested for loops, which means it has a big O runtime of O(n^2). 
+  Let’s look at a solution with a more efficient runtime. */

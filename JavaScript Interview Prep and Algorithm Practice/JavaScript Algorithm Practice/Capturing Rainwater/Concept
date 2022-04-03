@@ -15,7 +15,9 @@ The Concept
 The foundation to all the solutions for this problem is that the amount of rainwater at any given index is the difference between the lower of highest bars to its left and right and the height of the index itself:
 
 waterAtIndex = Math.min(highestLeftBound, highestRightBound) - heightOfIndex;
-Look at the histogram again. The amount of water at index 4 is 2. This is because its highest left bound is 3 (element at index 3), and its highest right bound is 2 (element at index 6). The lower of these two values is 2, and when we subtract the index’s height of 0, we get our answer of 2.
+Look at the histogram again. The amount of water at index 4 is 2. 
+This is because its highest left bound is 3 (element at index 3), and its highest right bound is 2 (element at index 6). 
+The lower of these two values is 2, and when we subtract the index’s height of 0, we get our answer of 2.
 
 The Naive Solution
 The naive solution to the problem is to:
@@ -50,7 +52,9 @@ function naiveSolution(heights) {
 
 
 The Optimized Solution
-The previous solution had a quadratic runtime, but it’s possible to solve this problem in O(n) time by using two pointers. The pointers will start at each end of the array and move towards each other. The two-pointer approach is a common approach for problems that require working with arrays, as it allows you to go through the array in a single loop and without needing to create copy arrays.
+The previous solution had a quadratic runtime, but it’s possible to solve this problem in O(n) time by using two pointers. 
+The pointers will start at each end of the array and move towards each other. 
+The two-pointer approach is a common approach for problems that require working with arrays, as it allows you to go through the array in a single loop and without needing to create copy arrays.
 
 We’ll start by creating the following variables:
 
@@ -61,7 +65,8 @@ leftBound = 0
 rightBound = 0
 
 
-leftPointer and rightPointer will start at the beginning and end of the array, respectively, and move towards each other until they meet. The algorithm is as follows:
+leftPointer and rightPointer will start at the beginning and end of the array, respectively, and move towards each other until they meet. 
+The algorithm is as follows:
 
 while leftPointer < rightPointer
   if the element at leftPointer <= the element at rightPointer
@@ -74,3 +79,9 @@ while leftPointer < rightPointer
     move rightPointer back by one 
 
 return totalWater
+
+
+Takeaway: The Two Pointer Approach
+The two-pointer approach is one that you can, and should, use in many interview questions. 
+When you see a problem that requires you to iterate through an array (or string), take a moment and think about if it would be possible to iterate through it in sections at the same time instead of in separate loops. 
+Common problems that can be solved using the two-pointer technique are the two sum problem (finding two numbers in an array that sum to a specified number) and reversing the characters in a string.
