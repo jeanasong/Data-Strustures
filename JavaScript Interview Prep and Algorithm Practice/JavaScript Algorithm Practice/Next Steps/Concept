@@ -1,0 +1,51 @@
+Next Steps
+
+Congratulations on completing Pass the Technical Interview with JavaScript! 
+You’ve learned a lot of new data structures and algorithms and built them all in JavaScript from the ground up!
+
+
+Next Steps
+
+There’s lots more to practice when it comes to data structures and algorithms. 
+As a developer, you’ll always want to use the best tool for the job, so you never have knowledge of too many data structures or algorithms. 
+If you’re interested in continuing to practice and build your skills, consider investing in some of our suggestions below.
+
+
+Additional Data Structures and Algorithms
+
+We’ve covered a broad base of fundamental data structures, but there are many more advanced and specialized forms. 
+Consider studying and building the following:
+
+Tree-based data structures like the red-black tree, trie, or self-balancing binary tree
+Binary and bitwise structures like bit fields and bitmasks
+Consider looking into the following algorithms:
+
+A*, a variation on Dijkstra’s algorithm.
+
+Additional sorting algorithms like heapsort, shell sort, or radix sort
+Additional pathfinding algorithms, such as the Lee algorithm for searching through mazes
+String-searching and pattern-matching algorithms such as the Knuth–Morris–Pratt (KMP) algorithm
+
+Extensions
+In addition to building data structures and algorithms themselves, try applying them in new situations. Here are a few ideas to get you started:
+
+Alter the sorting algorithms that you built in this course so that they take a comparator function and can sort anything instead of just numbers.
+Experiment with other hashing functions for your HashMap structure. Can you maximize the efficiency for different types of inputs with different hashing functions?
+
+
+Projects
+
+Besides learning new algorithms and data structures, one of the best ways to work on problem-solving is to build real-life projects. 
+Consider building a project where using algorithms and data structures will be necessary in order to make the application efficient:
+
+A dictionary search or spellchecker
+A route-planning application
+An application for pairing work partners based on their shared interests
+A card game simulator in which you can shuffle the deck, maintain player hands, and keep track of the state of play
+
+
+Practice
+
+One of the best ways to prepare for an interview is to practice with a friend! 
+Coding on a whiteboard with a time limit is not the most common or natural experience, so it’s good to build up your confidence by simulating the experience of a technical interview. 
+Try different problems and interview styles: whiteboarding with pseudocode, whiteboarding in JavaScript, coding on a computer, pairing on a video call, and more.
